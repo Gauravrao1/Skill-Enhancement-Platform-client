@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CategoryPage.css';
@@ -12,11 +12,7 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    fetchSkills();
-  }, [category]);
-
-  const fetchSkills = async () => {
+  const fetchSkills = useCallback(async () => {
     try {
       setLoading(true);
       const response = await axios.get(`${API_URL}/skills`, {
@@ -33,7 +29,11 @@ const CategoryPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category, searchTerm]);
+
+  useEffect(() => {
+    fetchSkills();
+  }, [fetchSkills]);
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
@@ -41,7 +41,7 @@ const CategoryPage = () => {
     }, 300);
 
     return () => clearTimeout(debounceTimer);
-  }, [searchTerm]);
+  }, [fetchSkills]);
 
   const handleSkillClick = (skillId) => {
     navigate(`/skill/${skillId}`);

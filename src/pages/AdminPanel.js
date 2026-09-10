@@ -279,11 +279,6 @@ const AdminPanel = () => {
                 const iconDisplay = typeof skill.icon === 'object' 
                   ? (skill.icon.emoji || skill.icon.value || '📚')
                   : (skill.icon || '📚');
-                // Handle color as object or string
-                const colorDisplay = typeof skill.color === 'object'
-                  ? (skill.color.primary || '#3498db')
-                  : (skill.color || '#3498db');
-                
                 return (
                   <div key={skill._id} className="admin-item">
                     <div>
