@@ -3,6 +3,14 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
+const getApiErrorMessage = (error, fallback) => {
+  const responseData = error.response?.data;
+  return responseData?.message
+    || responseData?.error
+    || responseData?.errors?.[0]?.message
+    || fallback;
+};
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -61,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || 'Login failed'
+        message: getApiErrorMessage(error, 'Login failed')
       };
     }
   };
@@ -83,7 +91,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || 'Registration failed'
+        message: getApiErrorMessage(error, 'Registration failed')
       };
     }
   };
