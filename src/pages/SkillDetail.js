@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { FaBookmark, FaExternalLinkAlt } from 'react-icons/fa';
 import './SkillDetail.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://skill-enhancement-platform-server.vercel.app/api';
 
 const SkillDetail = () => {
   const { id } = useParams();

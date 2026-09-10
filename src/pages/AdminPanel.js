@@ -4,7 +4,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import axios from 'axios';
 import './AdminPanel.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://skill-enhancement-platform-server.vercel.app/api';
 
 const AdminPanel = () => {
   const { isAdmin } = useAuth();

@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  const API_URL = process.env.REACT_APP_API_URL || '/api';
+  const API_URL = process.env.REACT_APP_API_URL || 'https://skill-enhancement-platform-server.vercel.app/api';
 
   const logout = useCallback(() => {
     localStorage.removeItem('token');

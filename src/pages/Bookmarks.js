@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaBookmark, FaExternalLinkAlt, FaTrash } from 'react-icons/fa';
 import './Bookmarks.css';
 
-const API_URL = process.env.REACT_APP_API_URL || '/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://skill-enhancement-platform-server.vercel.app/api';
 
 const Bookmarks = () => {
   const [bookmarks, setBookmarks] = useState([]);
