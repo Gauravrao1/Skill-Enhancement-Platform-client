@@ -8,6 +8,7 @@ const getApiErrorMessage = (error, fallback) => {
   return responseData?.message
     || responseData?.error
     || responseData?.errors?.[0]?.message
+    || (error.request && 'Cannot reach the API. Check the frontend API URL and backend deployment.')
     || fallback;
 };
 
